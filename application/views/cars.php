@@ -43,7 +43,7 @@
                                     <input class="form-control" id="year" placeholder="Wprowadź rok produkcji"
                                            name="year" pattern="\d*" maxlength="4" required>
                                 </div>
-                                <button type="submit" class="btn btn-default">Dodaj</button>
+                                <button type="submit" class="btn btn-primary">Dodaj</button>
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -90,12 +90,12 @@
             if (isset($success)) {
                 echo "<div class=\"alert alert-success alert-dismissable fade in\">
                                 <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                                <strong>Sukces!</strong>" . $success['success'] . "</div>";
+                                <strong>Sukces! </strong>" . $success['success'] . "</div>";
 
             } else if (isset($error)) {
                 echo "<div class=\"alert alert-danger alert-dismissable fade in\">
                                 <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                                <strong>Błąd!</strong>" .$error['error']."</div>";
+                                <strong>Błąd! </strong>" .$error['error']."</div>";
             }
 
             ?>

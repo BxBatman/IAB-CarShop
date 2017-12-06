@@ -21,12 +21,19 @@ class Invoices extends CI_Controller
         return $dataCar_query;
     }
 
+    public function getDataClient(){
+        $dataClient = $this->db->query("SELECT * FROM klient");
+        $dataClient_query = $dataClient->result_array();
+        return $dataClient_query;
+    }
+
     public function index()
     {
         $data_query = $this->getInvoiceData();
         $dataCar_query = $this->getDataCar();
+        $dataClient_query = $this->getDataClient();
         $this->load->view('header');
-        $this->load->view('invoices',['invoiceData'=>$data_query,'carData'=>$dataCar_query]);
+        $this->load->view('invoices',['invoiceData'=>$data_query,'carData'=>$dataCar_query,'clientData'=>$dataClient_query]);
     }
 
     public function addInvoice()
@@ -59,16 +66,18 @@ class Invoices extends CI_Controller
                             );
                             $data_query = $this->getInvoiceData();
                             $dataCar_query = $this->getDataCar();
+                            $dataClient_query = $this->getDataClient();
                             $this->load->view('header');
-                            $this->load->view('invoices',['success'=>$success,'invoiceData'=>$data_query,'carData'=>$dataCar_query]);
+                            $this->load->view('invoices',['success'=>$success,'invoiceData'=>$data_query,'carData'=>$dataCar_query,'clientData'=>$dataClient_query]);
                         } else {
                             $error = array(
                                 'error' => 'Błąd przy dodawaniu faktury'
                             );
                             $data_query = $this->getInvoiceData();
                             $dataCar_query = $this->getDataCar();
+                            $dataClient_query = $this->getDataClient();
                             $this->load->view('header');
-                            $this->load->view('invoices',['error'=>$error,'invoiceData'=>$data_query,'carData'=>$dataCar_query]);
+                            $this->load->view('invoices',['error'=>$error,'invoiceData'=>$data_query,'carData'=>$dataCar_query,'clientData'=>$dataClient_query]);
                         }
                     } else {
                         $error = array(
@@ -76,8 +85,9 @@ class Invoices extends CI_Controller
                         );
                         $data_query = $this->getInvoiceData();
                         $dataCar_query = $this->getDataCar();
+                        $dataClient_query = $this->getDataClient();
                         $this->load->view('header');
-                        $this->load->view('invoices',['error'=>$error,'invoiceData'=>$data_query,'carData'=>$dataCar_query]);
+                        $this->load->view('invoices',['error'=>$error,'invoiceData'=>$data_query,'carData'=>$dataCar_query,'clientData'=>$dataClient_query]);
 
                     }
                 } else {
@@ -86,8 +96,9 @@ class Invoices extends CI_Controller
                     );
                     $data_query = $this->getInvoiceData();
                     $dataCar_query = $this->getDataCar();
+                    $dataClient_query = $this->getDataClient();
                     $this->load->view('header');
-                    $this->load->view('invoices',['error'=>$error,'invoiceData'=>$data_query,'carData'=>$dataCar_query]);
+                    $this->load->view('invoices',['error'=>$error,'invoiceData'=>$data_query,'carData'=>$dataCar_query,'clientData'=>$dataClient_query]);
                 }
 
             } else {
@@ -96,15 +107,17 @@ class Invoices extends CI_Controller
                 );
                 $data_query = $this->getInvoiceData();
                 $dataCar_query = $this->getDataCar();
+                $dataClient_query = $this->getDataClient();
                 $this->load->view('header');
-                $this->load->view('invoices',['error'=>$error,'invoiceData'=>$data_query,'carData'=>$dataCar_query]);
+                $this->load->view('invoices',['error'=>$error,'invoiceData'=>$data_query,'carData'=>$dataCar_query,'clientData'=>$dataClient_query]);
             }
 
         } else {
             $data_query = $this->getInvoiceData();
             $dataCar_query = $this->getDataCar();
+            $dataClient_query = $this->getDataClient();
             $this->load->view('header');
-            $this->load->view('invoices',['invoiceData'=>$data_query,'carData'=>$dataCar_query]);
+            $this->load->view('invoices',['invoiceData'=>$data_query,'carData'=>$dataCar_query,'clientData'=>$dataClient_query]);
         }
     }
 
@@ -117,16 +130,18 @@ class Invoices extends CI_Controller
             );
             $data_query = $this->getInvoiceData();
             $dataCar_query = $this->getDataCar();
+            $dataClient_query = $this->getDataClient();
             $this->load->view('header');
-            $this->load->view('invoices',['success'=>$success,'invoiceData'=>$data_query,'carData'=>$dataCar_query]);
+            $this->load->view('invoices',['success'=>$success,'invoiceData'=>$data_query,'carData'=>$dataCar_query,'clientData'=>$dataClient_query]);
         }else {
             $error = array(
                 'error' => 'Wystąpił błąd podczas usuniecia lub faktura o takim id nie istnieje'
             );
             $data_query = $this->getInvoiceData();
             $dataCar_query = $this->getDataCar();
+            $dataClient_query = $this->getDataClient();
             $this->load->view('header');
-            $this->load->view('invoices',['error'=>$error,'invoiceData'=>$data_query,'carData'=>$dataCar_query]);
+            $this->load->view('invoices',['error'=>$error,'invoiceData'=>$data_query,'carData'=>$dataCar_query,'clientData'=>$dataClient_query]);
         }
     }
 

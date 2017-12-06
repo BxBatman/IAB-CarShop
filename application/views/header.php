@@ -49,7 +49,9 @@
             .row.content {height:auto;}
         }
 
-
+        .btn-block{
+            min-width: 120%;
+        }
 
 
     </style>

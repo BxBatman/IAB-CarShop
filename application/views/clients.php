@@ -17,7 +17,7 @@
                             <form method="post" action="<?php echo site_url('clients/addClient'); ?>">
                                 <div class="form-group">
                                     <label>Podaj nazwisko:</label>
-                                    <input class="form-control" type="text"  pattern="[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+" id="surname" placeholder="Wprowadź nazwisko"
+                                    <input class="form-control" type="text"   pattern="[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+" id="surname" placeholder="Wprowadź nazwisko"
                                            name="surname" required>
                                 </div>
                                 <div class="form-group">
@@ -98,12 +98,12 @@
             if (isset($success)) {
                 echo "<div class=\"alert alert-success alert-dismissable fade in\">
                                 <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                                <strong>Sukces!</strong>" . $success['success'] . "</div>";
+                                <strong>Sukces! </strong>" . $success['success'] . "</div>";
 
             } else if (isset($error)) {
                 echo "<div class=\"alert alert-danger alert-dismissable fade in\">
                                 <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                                <strong>Błąd!</strong>" . $error['error'] . "</div>";
+                                <strong>Błąd! </strong>" . $error['error'] . "</div>";
             }
 
             ?>

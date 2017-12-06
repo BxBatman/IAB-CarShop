@@ -50,7 +50,60 @@
 
                 </div>
             </div>
-            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#invoiceModal">Pokaż faktury
+            <button type="button" class="btn btn-primary btn-sm btn-block"  data-toggle="modal" data-target="#clientModal" style="margin-bottom: 2px">Tabela klientów
+            </button>
+
+            <div id="clientModal" class="modal fade" role="dialog">
+                <div class="modal-dialog" style="width: 60%">
+
+                    <div class="modal-content" >
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Tabela klientów</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nazwisko</th>
+                                    <th>Imie</th>
+                                    <th>Numer telefonu</th>
+                                    <th>Adres</th>
+                                    <th>Miasto</th>
+                                    <th>Kod pocztowy</th>
+                                    <th>Nip</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                foreach ($clientData as $row) {
+
+                                    echo "<tr>";
+                                    echo "<td>" . $row['idKlient'] . "</td>";
+                                    echo "<td>" . $row['nazwiskoK'] . "</td>";
+                                    echo "<td>" . $row['imieK'] . "</td>";
+                                    echo " <td>" . $row['numerTelefonu'] . "</td>";
+                                    echo " <td>" . $row['adres'] . "</td>";
+                                    echo " <td>" . $row['miasto'] . "</td>";
+                                    echo " <td>" . $row['kodPocztowy'] . "</td>";
+                                    echo " <td>" . $row['nip'] . "</td>";
+                                    echo "</tr>";
+
+
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm btn-block" style="margin-bottom: 2px" data-toggle="modal" data-target="#invoiceModal">Pokaż faktury
             </button>
 
             <div id="invoiceModal" class="modal fade" role="dialog">
@@ -150,12 +203,12 @@
             if (isset($success)) {
                 echo "<div class=\"alert alert-success alert-dismissable fade in\">
                                 <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                                <strong>Sukces!</strong>".$success['success']." </div>";
+                                <strong>Sukces! </strong>".$success['success']." </div>";
 
             } else if (isset($error)) {
                 echo "<div class=\"alert alert-danger alert-dismissable fade in\">
                                 <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                                <strong>Błąd!</strong>". $error['error']."</div>";
+                                <strong>Błąd! </strong>". $error['error']."</div>";
             }
 
             ?>
