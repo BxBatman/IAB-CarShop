@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 if (isset($error_message)) {
                                     echo "<div class=\"alert alert-danger alert-dismissable fade in\">
                                 <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                                <strong>Błąd!</strong> $error_message</div>";
+                                <strong>Błąd! </strong> $error_message</div>";
                                 } ?>
                                 <input class="form-control" placeholder="Kod" name="code" type="password">
                             </div>

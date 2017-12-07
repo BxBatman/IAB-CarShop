@@ -50,7 +50,7 @@
         }
 
         .btn-block{
-            min-width: 120%;
+            min-width: 130%;
         }
 
 
@@ -73,6 +73,8 @@
                 <li><a href="<?php echo site_url('clients/index');?>" style="color:white">Klienci</a></li>
                 <li><a href="<?php echo site_url('cars/index');?>" style="color: white">Samochody</a></li>
                 <li><a href="<?php echo site_url('invoices/index');?>" style="color: white">Faktury</a></li>
+                <li><a href="<?php echo site_url('ticket/index');?>" style="color: white">Bilet</a></li>
+                <li><a href="<?php echo site_url('mechanic/index');?>" style="color: white">Mechanicy</a></li>
                 <li><a href="#">Link</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" >

@@ -1,0 +1,113 @@
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-1 sidenav"  >
+            <button type="button" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#carModal" style="margin-bottom: 2px;">Dodaj bilet
+            </button>
+
+            <div id="carModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Dodaj auto</h4>
+                        </div>
+
+
+
+
+                        <div class="modal-body">
+                            <form name="carForm" method="post" action="<?php echo site_url('cars/addCar'); ?>">
+                                <div class="form-group">
+                                    <label>Numer Seryjny:</label>
+                                    <input class="form-control" id="serialNumber" placeholder="Wprowadź numer"
+                                           name="serialNumber" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Marka:</label>
+                                    <input class="form-control" id="make" placeholder="Wprowadź marke"
+                                           name="make" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Model:</label>
+                                    <input class="form-control" id="model" placeholder="Wprowadź model"
+                                           name="model" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Kolor:</label>
+                                    <input class="form-control" id="color" placeholder="Wprowadź kolor"
+                                           name="color" type="text" pattern="[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ ]+" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Rok:</label>
+                                    <input class="form-control" id="year" placeholder="Wprowadź rok produkcji"
+                                           name="year" pattern="\d*" maxlength="4" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Dodaj</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#myModal2">Usuń
+                bilet
+            </button>
+
+            <div id="myModal2" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Usuń auto</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" action="<?php echo site_url('cars/removeCar'); ?>" >
+                                <div class="form-group">
+                                    <label>Podaj numer ID:</label>
+                                    <input class="form-control" id="id" placeholder="Wprowadź ID"
+                                           name="id" pattern="\d*" required>
+                                </div>
+                                <button type="submit" class="btn btn-danger">Usuń</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            </a>
+            <p><a href="#">Link</a></p>
+        </div>
+        <div class="col-sm-10 text-left">
+            <?php
+            if (isset($success)) {
+                echo "<div class=\"alert alert-success alert-dismissable fade in\">
+                                <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+                                <strong>Sukces! </strong>" . $success['success'] . "</div>";
+
+            } else if (isset($error)) {
+                echo "<div class=\"alert alert-danger alert-dismissable fade in\">
+                                <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
+                                <strong>Błąd! </strong>" .$error['error']."</div>";
+            }
+
+            ?>
+            <div class="container">
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+</div>
+</body>
+</html>
