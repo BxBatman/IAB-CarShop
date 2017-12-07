@@ -196,6 +196,9 @@
 
                 </div>
             </div>
+            <form method="post" action="<?php echo site_url('invoices/generate'); ?>" >
+                <button type="button" class="btn btn-primary btn-block " style="padding-top: 2px; margin-top: 2px" >Wygeneruj</button>
+            </form>
             <p><a href="#">Link</a></p>
         </div>
         <div class="col-sm-10 text-center">

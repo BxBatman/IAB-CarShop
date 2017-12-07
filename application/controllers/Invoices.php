@@ -145,4 +145,9 @@ class Invoices extends CI_Controller
         }
     }
 
+    public function generate(){
+        $data_query = $this->getInvoiceData();
+        $this->load->view('generate',['invoiceData'=>$data_query]);
+    }
+
 }
