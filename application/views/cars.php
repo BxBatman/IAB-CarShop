@@ -83,7 +83,6 @@
                     </div>
                 </div>
             </a>
-            <p><a href="#">Link</a></p>
         </div>
         <div class="col-sm-10 text-left">
             <?php

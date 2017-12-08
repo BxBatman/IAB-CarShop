@@ -46,7 +46,7 @@ class Ticket extends CI_Controller
         $date2 = $this->input->post('date2');
         $date_end = date('m/d/y', strtotime($date2));
 
-        if ($ticketNumber != null) {
+
             $this->db->query("SELECT * FROM auto where idAuto=" . $carID);
             if ($this->db->affected_rows() > 0) {
                 $this->db->query("SELECT * FROM klient where idKlient=" . $clientID);
@@ -102,14 +102,33 @@ class Ticket extends CI_Controller
                 $this->load->view('invoices', ['error' => $error, 'ticketData' => $data_query, 'carData' => $dataCar_query, 'clientData' => $dataClient_query]);
             }
 
-        } else {
-            $data_query = $this->getTicketData();
-            $dataCar_query = $this->getDataCar();
-            $dataClient_query = $this->getDataClient();
-            $this->load->view('header');
-            $this->load->view('ticket', ['ticketData' => $data_query, 'carData' => $dataCar_query, 'clientData' => $dataClient_query]);
         }
+
+
+    public function removeTicket(){
+        $id = $this->input->post('id');
+
+
+            $this->db->delete('bilet', array('idBilet' => $id));
+            if ($this->db->affected_rows() > 0) {
+                $success = array(
+                    'success' => 'Usunięto bilet'
+                );
+                $this->load->view('header');
+                $data_query = $this->getTicketData();
+                $dataCar_query = $this->getDataCar();
+                $dataClient_query = $this->getDataClient();
+                $this->load->view('ticket', ['carData' => $dataCar_query, 'success' => $success,'clientData'=>$dataClient_query,'ticketData'=>$data_query]);
+            } else {
+                $error = array(
+                    'error' => 'Wystąpił błąd podczas usuniecia lub bilet o takim id nie istnieje'
+                );
+                $data_query = $this->getTicketData();
+                $dataCar_query = $this->getDataCar();
+                $dataClient_query = $this->getDataClient();
+                $this->load->view('header');
+                $this->load->view('ticket', ['carData' => $dataCar_query, 'error' => $error,'clientData'=>$dataClient_query,'ticketData'=>$data_query]);
+            }
+
     }
-
-
 }

@@ -41,6 +41,7 @@ class Repair extends CI_Controller{
         $date1 = $this->input->post('date');
         $date = date('m/d/y', strtotime($date1));
 
+
     }
 
 
