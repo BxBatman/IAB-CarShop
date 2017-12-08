@@ -75,6 +75,8 @@
                 <li><a href="<?php echo site_url('invoices/index');?>" style="color: white">Faktury</a></li>
                 <li><a href="<?php echo site_url('ticket/index');?>" style="color: white">Bilet</a></li>
                 <li><a href="<?php echo site_url('mechanic/index');?>" style="color: white">Mechanicy</a></li>
+                <li><a href="<?php echo site_url('parts/index');?>" style="color: white">Części</a></li>
+                <li><a href="<?php echo site_url('repair/index');?>" style="color: white">Naprawa</a></li>
                 <li><a href="#">Link</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" >

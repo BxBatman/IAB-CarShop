@@ -107,7 +107,7 @@
             </button>
 
             <div id="invoiceModal" class="modal fade" role="dialog">
-                <div class="modal-dialog" style="width:90%">
+                <div class="modal-dialog" style="width:95%">
 
                     <div class="modal-content">
                         <div class="modal-header">
@@ -131,6 +131,7 @@
                                     <th>Miasto</th>
                                     <th>Kod pocztowy</th>
                                     <th>Sprzedawca</th>
+                                    <th>Kwota</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -151,6 +152,7 @@
                                     echo " <td>" . $row['miasto'] . "</td>";
                                     echo " <td>" . $row['kodPocztowy'] . "</td>";
                                     echo " <td>" . $row['nazwisko']." ".$row['imie'] . "</td>";
+                                    echo " <td>" . $row['kwota'] . "</td>";
 
                                     echo "</tr>";
 
@@ -250,6 +252,12 @@
                         <label>ID sprzedawcy:</label>
                         <input class="form-control" id="clientID" placeholder="Wprowadź id sprzedawcy"
                                name="sellerID" pattern="\d*" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Kwota na fakturze </label>
+                        <input class="form-control" id="price" placeholder="Wprowadź kwote"
+                               name="price" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Dodaj</button>
                 </form>

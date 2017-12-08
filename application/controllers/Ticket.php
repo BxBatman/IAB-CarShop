@@ -21,7 +21,7 @@ class Ticket extends CI_Controller
 
     public function getTicketData()
     {
-        $data = $this->db->query("SELECT * FROM bilet");
+        $data = $this->db->query("SELECT * FROM bilet JOIN auto ON bilet.idAuto = auto.idAuto JOIN klient ON klient.idKlient = bilet.idKlient");
         $data_query = $data->result_array();
         return $data_query;
     }

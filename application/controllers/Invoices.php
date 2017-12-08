@@ -44,7 +44,7 @@ class Invoices extends CI_Controller
         $carID = $this->input->post('carID');
         $clientID = $this->input->post('clientID');
         $sellerID = $this->input->post('sellerID');
-
+        $price = $this->input->post('price');
         if ($invoiceNumber != null) {
             $this->db->query("SELECT * FROM auto where idAuto=" . $carID);
             if ($this->db->affected_rows() > 0) {
@@ -57,7 +57,8 @@ class Invoices extends CI_Controller
                             "data" => $date,
                             "idAuto" => $carID,
                             "idKlient" => $clientID,
-                            "idSprzedawcy" => $sellerID
+                            "idSprzedawcy" => $sellerID,
+                            'kwota' => $price
                         );
                         $this->db->insert('faktura', $data);
                         if ($this->db->affected_rows() > 0) {

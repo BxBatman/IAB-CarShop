@@ -106,6 +106,74 @@
 
                 </div>
             </div>
+            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" style="margin-bottom: 2px" data-target="#myModal3">
+                Pokaż bilety
+            </button>
+
+            <div id="myModal3" class="modal fade" role="dialog">
+                <div class="modal-dialog" style="width:100%">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Bilety</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Numer biletu</th>
+                                    <th>Data otrzymania</th>
+                                    <th>Komentarz</th>
+                                    <th>Data zwrotu</th>
+                                    <th>Nazwisko</th>
+                                    <th>Imie</th>
+                                    <th>Numer telefonu</th>
+                                    <th>Adres</th>
+                                    <th>Miasto</th>
+                                    <th>Kod pocztowy</th>
+                                    <th>Nip</th>
+                                    <th>Marka</th>
+                                    <th>Model</th>
+                                    <th>Rok</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                foreach ($ticketData as $row) {
+
+                                    echo "<tr>";
+                                    echo "<td>" . $row['idBilet'] . "</td>";
+                                    echo "<td>" . $row['numerBiletu'] . "</td>";
+                                    echo "<td>" . $row['dataOtrzymania'] . "</td>";
+                                    echo "<td>" . $row['komentarz'] . "</td>";
+                                    echo "<td>" . $row['dataZwrotu'] . "</td>";
+                                    echo "<td>" . $row['nazwiskoK'] . "</td>";
+                                    echo "<td>" . $row['imieK'] . "</td>";
+                                    echo " <td>" . $row['numerTelefonu'] . "</td>";
+                                    echo " <td>" . $row['adres'] . "</td>";
+                                    echo " <td>" . $row['miasto'] . "</td>";
+                                    echo " <td>" . $row['kodPocztowy'] . "</td>";
+                                    echo " <td>" . $row['nip'] . "</td>";
+                                    echo " <td>" . $row['marka'] . "</td>";
+                                    echo " <td>" . $row['model'] . "</td>";
+                                    echo " <td>" . $row['rok'] . "</td>";
+                                    echo "</tr>";
+
+
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
 
 
             <button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#myModal2">
@@ -139,6 +207,7 @@
                 </div>
             </div>
             </a>
+
             <p><a href="#">Link</a></p>
         </div>
         <div class="col-sm-10 text-left">
