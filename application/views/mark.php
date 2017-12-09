@@ -1,13 +1,60 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-1 sidenav">
-            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal"
-                    style="margin-bottom: 2px" data-target="#myModal3">
-                Pokaż bilety
+            <button type="button" class="btn btn-primary btn-sm btn-block" style="margin-bottom: 2px"
+                    data-toggle="modal" data-target="#markModal">Oceny
             </button>
 
-            <div id="myModal3" class="modal fade" role="dialog">
-                <div class="modal-dialog" style="width:100%">
+            <div id="markModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Oceny</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nazwisko</th>
+                                    <th>Imie</th>
+                                    <th>Ocena</th>
+                                    <th>Komentarz</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                foreach ($markData as $row) {
+
+                                    echo "<tr>";
+                                    echo "<td>" . $row['idMechanik'] . "</td>";
+                                    echo "<td>" . $row['nazwisko'] . "</td>";
+                                    echo "<td>" . $row['imie'] . "</td>";
+                                    echo "<td>" . $row['ocena'] . "</td>";
+                                    echo "<td>" . $row['komentarz'] . "</td>";
+                                    echo "</tr>";
+
+
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <button type="button" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#carModal"
+                    style="margin-bottom: 2px;">Pokaż bilety
+            </button>
+
+            <div id="carModal" class="modal fade" role="dialog">
+                <div class="modal-dialog" style="width: 95%">
 
                     <div class="modal-content">
                         <div class="modal-header">
@@ -70,14 +117,41 @@
 
                 </div>
             </div>
-
-
-            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal"
-                    style="margin-bottom: 2px" data-target="#myModal4">
-                Mechanicy
+            <button type="button" class="btn btn-danger btn-sm btn-block" style="margin-bottom: 2px" data-toggle="modal"
+                    data-target="#myModal2">Usuń
+                ocene
             </button>
 
-            <div id="myModal4" class="modal fade" role="dialog">
+            <div id="myModal2" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Usuń mechanika</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" action="<?php echo site_url('mark/removeMark'); ?>">
+                                <div class="form-group">
+                                    <label>Podaj numer ID:</label>
+                                    <input class="form-control" id="id" placeholder="Wprowadź ID"
+                                           name="id" pattern="\d*" required>
+                                </div>
+                                <button type="submit" class="btn btn-danger">Usuń</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm btn-block" style="margin-bottom: 2px"
+                    data-toggle="modal" data-target="#mechanicModal">Mechanicy
+            </button>
+
+            <div id="mechanicModal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
 
                     <div class="modal-content">
@@ -92,16 +166,18 @@
                                     <th>Id</th>
                                     <th>Nazwisko</th>
                                     <th>Imie</th>
+
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                foreach ($mechanicData as $row) {
+                                foreach ($markData as $row) {
 
                                     echo "<tr>";
                                     echo "<td>" . $row['idMechanik'] . "</td>";
                                     echo "<td>" . $row['nazwisko'] . "</td>";
                                     echo "<td>" . $row['imie'] . "</td>";
+
                                     echo "</tr>";
 
 
@@ -117,33 +193,7 @@
 
                 </div>
             </div>
-
-
-            <button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#myModal2">
-                Usuń
-                bilet
-            </button>
-
-            <div id="myModal4" class="modal fade" role="dialog">
-                <div class="modal-dialog">
-
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Usuń auto</h4>
-                        </div>
-                        <div class="modal-body">
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-
+            </a>
         </div>
         <div class="col-sm-10 text-left">
             <?php
@@ -160,44 +210,28 @@
 
             ?>
             <div class="container" style="width:50%; padding-top: 20px">
-                <h2>Naprawa</h2>
-                <form method="post" action="<?php echo site_url('ticket/addTicket'); ?>">
+                <h2>Dodaj ocene</h2>
+                <form name="carForm" method="post" action="<?php echo site_url('mark/addMark'); ?>">
                     <div class="form-group">
-                        <label>Id biletu:</label>
-                        <input class="form-control" id="ticketID" placeholder="Wprowadź id biletu"
-                               name="ticketID" required>
+                        <label>Id mechanika</label>
+                        <input class="form-control" pattern="\d*" id="id" placeholder="Wprowadź id mechanika "
+                               name="id" required>
                     </div>
                     <div class="form-group">
-                        <label>ID części:</label>
-                        <input class="form-control" id="partID" placeholder="Wprowadź id części"
-                               name="partID" pattern="\d*" required>
+                        <label>Id biletu</label>
+                        <input class="form-control" pattern="\d*" id="ticketID" placeholder="Wprowadź id biletu "
+                               name=ticketID required>
                     </div>
                     <div class="form-group">
-                        <label>Ilość: </label>
-                        <input class="form-control" id="number" placeholder="Wprowadź ilość użytych"
-                               name="number" pattern="\d*" required>
+                        <label>Ocena</label>
+                        <input class="form-control" pattern="\d*" id="mark" placeholder="Wprowadź ocene mechanika"
+                               name="mark" required>
                     </div>
                     <div class="form-group">
-                        <label>Kwota </label>
-                        <input class="form-control" id="cost" placeholder="Wprowadź koszt"
-                               name="cost" required>
+                        <label>Komentarz</label>
+                        <input class="form-control" id="comment" placeholder="Wprowadź komentarz"
+                               name="comment" required>
                     </div>
-                    <div class="form-group">
-                        <label>Data zwrotu</label>
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="text" id="date" name="date" class="form-control" placeholder="Wybierz date"
-                                   required>
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#datetpicker').datepicker();
-                        });
-                    </script>
-
                     <button type="submit" class="btn btn-primary">Dodaj</button>
                 </form>
             </div>

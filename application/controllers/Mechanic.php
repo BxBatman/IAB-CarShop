@@ -23,7 +23,7 @@ class Mechanic extends CI_Controller
     {
         $surname = $this->input->post('surname');
         $name = $this->input->post('name');
-        if ($surname != null) {
+
             $data = array(
                 'nazwisko' => $surname,
                 'imie' => $name
@@ -47,11 +47,7 @@ class Mechanic extends CI_Controller
                 $this->load->view('mechanic', ['mechanicData' => $data_query, 'error' => $error]);
             }
 
-        } else {
-            $data_query = $this->getMechanicData();
-            $this->load->view('header');
-            $this->load->view('mechanic', ['mechanicData' => $data_query]);
-        }
+
     }
 
     public function removeMechanic()

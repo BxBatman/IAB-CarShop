@@ -106,7 +106,8 @@
 
                 </div>
             </div>
-            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" style="margin-bottom: 2px" data-target="#myModal3">
+            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal"
+                    style="margin-bottom: 2px" data-target="#myModal3">
                 Pokaż bilety
             </button>
 
@@ -208,7 +209,6 @@
             </div>
             </a>
 
-            <p><a href="#">Link</a></p>
         </div>
         <div class="col-sm-10 text-left">
             <?php
@@ -239,7 +239,8 @@
                     </script>
                     <div class="form-group">
                         <div class="input-group date" data-provide="datepicker">
-                            <input type="text" id="date1" name="date1" class="form-control" placeholder="Data otrzymania"
+                            <input type="text" id="date1" name="date1" class="form-control"
+                                   placeholder="Data otrzymania"
                                    required>
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-th"></span>

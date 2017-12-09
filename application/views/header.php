@@ -77,6 +77,7 @@
                 <li><a href="<?php echo site_url('mechanic/index');?>" style="color: white">Mechanicy</a></li>
                 <li><a href="<?php echo site_url('parts/index');?>" style="color: white">Części</a></li>
                 <li><a href="<?php echo site_url('repair/index');?>" style="color: white">Naprawa</a></li>
+                <li><a href="<?php echo site_url('mark/index');?>" style="color: white">Oceny</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right" >
                 <li ><a href="#"><span  style="color: white;"> Zalogowano jako: <?php echo $_SESSION['imie']." ".$_SESSION['nazwisko']; ?></span></a></li>

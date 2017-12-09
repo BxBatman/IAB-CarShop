@@ -1,7 +1,8 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-1 sidenav">
-            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#carModal" style="margin-bottom: 2px">Tabela aut
+            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#carModal"
+                    style="margin-bottom: 2px">Tabela aut
             </button>
 
             <div id="carModal" class="modal fade" role="dialog">
@@ -50,13 +51,14 @@
 
                 </div>
             </div>
-            <button type="button" class="btn btn-primary btn-sm btn-block"  data-toggle="modal" data-target="#clientModal" style="margin-bottom: 2px">Tabela klientów
+            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal"
+                    data-target="#clientModal" style="margin-bottom: 2px">Tabela klientów
             </button>
 
             <div id="clientModal" class="modal fade" role="dialog">
                 <div class="modal-dialog" style="width: 60%">
 
-                    <div class="modal-content" >
+                    <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Tabela klientów</h4>
@@ -103,7 +105,8 @@
 
                 </div>
             </div>
-            <button type="button" class="btn btn-primary btn-sm btn-block" style="margin-bottom: 2px" data-toggle="modal" data-target="#invoiceModal">Pokaż faktury
+            <button type="button" class="btn btn-primary btn-sm btn-block" style="margin-bottom: 2px"
+                    data-toggle="modal" data-target="#invoiceModal">Pokaż faktury
             </button>
 
             <div id="invoiceModal" class="modal fade" role="dialog">
@@ -143,15 +146,15 @@
                                     echo "<td>" . $row['numerFaktury'] . "</td>";
                                     echo "<td>" . $row['data'] . "</td>";
                                     echo " <td>" . $row['numerSeryjny'] . "</td>";
-                                    echo " <td>" . $row['marka']." ".$row['model'] . "</td>";
+                                    echo " <td>" . $row['marka'] . " " . $row['model'] . "</td>";
                                     echo " <td>" . $row['kolor'] . "</td>";
                                     echo " <td>" . $row['rok'] . "</td>";
-                                    echo " <td>" . $row['nazwiskoK']." ".$row['imieK'] . "</td>";
+                                    echo " <td>" . $row['nazwiskoK'] . " " . $row['imieK'] . "</td>";
                                     echo " <td>" . $row['numerTelefonu'] . "</td>";
                                     echo " <td>" . $row['adres'] . "</td>";
                                     echo " <td>" . $row['miasto'] . "</td>";
                                     echo " <td>" . $row['kodPocztowy'] . "</td>";
-                                    echo " <td>" . $row['nazwisko']." ".$row['imie'] . "</td>";
+                                    echo " <td>" . $row['nazwisko'] . " " . $row['imie'] . "</td>";
                                     echo " <td>" . $row['kwota'] . "</td>";
 
                                     echo "</tr>";
@@ -169,7 +172,8 @@
 
                 </div>
             </div>
-            <button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#deleteModal">Usuń
+            <button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal"
+                    data-target="#deleteModal">Usuń
                 fakture
             </button>
 
@@ -182,7 +186,7 @@
                             <h4 class="modal-title">Usuń fakture</h4>
                         </div>
                         <div class="modal-body">
-                            <form method="post" action="<?php echo site_url('invoices/deleteInvoice'); ?>" >
+                            <form method="post" action="<?php echo site_url('invoices/deleteInvoice'); ?>">
                                 <div class="form-group">
                                     <label>Podaj numer ID:</label>
                                     <input class="form-control" id="id" placeholder="Wprowadź ID"
@@ -198,22 +202,23 @@
 
                 </div>
             </div>
-            <form method="post" action="<?php echo site_url('invoices/generate'); ?>" >
-                <button type="button" class="btn btn-primary btn-block " style="padding-top: 2px; margin-top: 2px" >Wygeneruj</button>
+            <form method="post" action="<?php echo site_url('invoices/generate'); ?>">
+                <button type="button" class="btn btn-primary btn-block " style="padding-top: 2px; margin-top: 2px">
+                    Wygeneruj
+                </button>
             </form>
-            <p><a href="#">Link</a></p>
         </div>
         <div class="col-sm-10 text-center">
             <?php
             if (isset($success)) {
                 echo "<div class=\"alert alert-success alert-dismissable fade in\">
                                 <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                                <strong>Sukces! </strong>".$success['success']." </div>";
+                                <strong>Sukces! </strong>" . $success['success'] . " </div>";
 
             } else if (isset($error)) {
                 echo "<div class=\"alert alert-danger alert-dismissable fade in\">
                                 <a href=\"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>
-                                <strong>Błąd! </strong>". $error['error']."</div>";
+                                <strong>Błąd! </strong>" . $error['error'] . "</div>";
             }
 
             ?>
@@ -226,18 +231,9 @@
                                name="invoiceNumber" required>
                     </div>
                     <div class="form-group">
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="text" id="date" name="date" class="form-control" placeholder="Wybierz date" required>
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
-                        </div>
+                        <input type="date" id="date" name="date" class="form-control" placeholder="Wybierz date"
+                               required>
                     </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#datetpicker').datepicker();
-                        });
-                    </script>
                     <div class="form-group">
                         <label>ID auta:</label>
                         <input class="form-control" id="carID" placeholder="Wprowadź id auta"
