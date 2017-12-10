@@ -42,9 +42,7 @@ class Ticket extends CI_Controller
         $clientID = $this->input->post('clientID');
         $comment = $this->input->post('comment');
         $date1 = $this->input->post('date1');
-        $date_received = date('m/d/y', strtotime($date1));
-        $date2 = $this->input->post('date2');
-        $date_end = date('m/d/y', strtotime($date2));
+        $date = date('y/m/d', strtotime($date1));
 
 
             $this->db->query("SELECT * FROM auto where idAuto=" . $carID);
@@ -55,9 +53,9 @@ class Ticket extends CI_Controller
                             "numerBiletu" => $ticketNumber,
                             "idAuto" => $carID,
                             "idKlient" => $clientID,
-                            "dataOtrzymania"=>$date_received,
+                            "dataOtrzymania"=> $date,
                             "komentarz" => $comment,
-                            "dataZwrotu" => $date_end
+
                         );
                         $this->db->insert('bilet', $data);
                         if ($this->db->affected_rows() > 0) {

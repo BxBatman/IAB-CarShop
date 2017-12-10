@@ -7,7 +7,7 @@ class Mark extends CI_Controller
 
     public function getMarks()
     {
-        $data = $this->db->query('SELECT * FROM serwisMechanik JOIN mechanik ON mechanik.idMechanik = serwisMechanik.idMechanik ');
+        $data = $this->db->query('SELECT * FROM serwisMechanik JOIN mechanik ON mechanik.idMechanik = serwisMechanik.idMechanik  JOIN bilet on bilet.idBilet = serwismechanik.idBilet');
         $data_query = $data->result_array();
         return $data_query;
     }
@@ -27,8 +27,9 @@ class Mark extends CI_Controller
     {
         $data_query = $this->getMarks();
         $dataTicket_query = $this->getTicketData();
+        $dataMechanic_query = $this->getMechanicData();
         $this->load->view('header');
-        $this->load->view('mark', ['markData' => $data_query,'ticketData'=>$dataTicket_query]);
+        $this->load->view('mark', ['markData' => $data_query,'ticketData'=>$dataTicket_query,'mechanicData'=>$dataMechanic_query]);
 
     }
 
@@ -42,7 +43,7 @@ class Mark extends CI_Controller
             'idBilet' => $ticketID,
             'idMechanik' => $id,
             'ocena' => $mark,
-            'komentarz' => $comment
+            'komentarzM' => $comment
 
         );
 
@@ -54,7 +55,8 @@ class Mark extends CI_Controller
             $this->load->view('header');
             $data_query = $this->getMarks();
             $dataTicket_query = $this->getTicketData();
-            $this->load->view('mechanic', ['markData' => $data_query, 'success' => $success,'ticketData'=>$dataTicket_query]);
+            $dataMechanic_query = $this->getMechanicData();
+            $this->load->view('mark', ['markData' => $data_query, 'success' => $success,'ticketData'=>$dataTicket_query,'mechanicData'=>$dataMechanic_query]);
         } else {
             $error = array(
                 'error' => 'Wystąpił błąd podczas dodania'
@@ -62,7 +64,8 @@ class Mark extends CI_Controller
             $this->load->view('header');
             $data_query = $this->getMarks();
             $dataTicket_query = $this->getTicketData();
-            $this->load->view('mechanic', ['markData' => $data_query, 'error' => $error,'ticketData'=>$dataTicket_query]);
+            $dataMechanic_query = $this->getMechanicData();
+            $this->load->view('mark', ['markData' => $data_query, 'error' => $error,'ticketData'=>$dataTicket_query,'mechanicData'=>$dataMechanic_query]);
         }
 
     }
@@ -76,7 +79,8 @@ class Mark extends CI_Controller
             );
             $data_query = $this->getMarks();
             $dataTicket_query = $this->getTicketData();
-            $this->load->view('mark', ['markData' => $data_query, 'success' => $success,'ticketData'=>$dataTicket_query]);
+            $dataMechanic_query = $this->getMechanicData();
+            $this->load->view('mark', ['markData' => $data_query, 'success' => $success,'ticketData'=>$dataTicket_query,'mechanicData'=>$dataMechanic_query]);
         } else {
             $error = array(
                 'error' => 'Wystąpił błąd podczas usuniecia lub mechanik o takim id nie istnieje'
@@ -84,7 +88,8 @@ class Mark extends CI_Controller
             $this->load->view('header');
             $data_query = $this->getMarks();
             $dataTicket_query = $this->getTicketData();
-            $this->load->view('mark', ['markData' => $data_query, 'error' => $error,'ticketData'=>$dataTicket_query]);
+            $dataMechanic_query = $this->getMechanicData();
+            $this->load->view('mark', ['markData' => $data_query, 'error' => $error,'ticketData'=>$dataTicket_query,'mechanicData'=>$dataMechanic_query]);
         }
     }
 }

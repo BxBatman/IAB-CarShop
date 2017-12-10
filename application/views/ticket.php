@@ -232,35 +232,15 @@
                         <input class="form-control" id="ticketNumber" placeholder="Wprowadź numer biletu"
                                name="ticketNumber" required>
                     </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#datetpicker').datepicker();
-                        });
-                    </script>
                     <div class="form-group">
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="text" id="date1" name="date1" class="form-control"
+                        <label>Data otrzymania</label>
+                        <div class="input-group date" >
+                            <input type="date" id="date1" name="date1" class="form-control"
                                    placeholder="Data otrzymania"
                                    required>
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
                         </div>
                     </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#datetpicker').datepicker();
-                        });
-                    </script>
-                    <div class="form-group">
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="text" id="date2" name="date2" class="form-control" placeholder="Data zwrotu"
-                                   required>
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="form-group">
                         <label>ID auta:</label>
                         <input class="form-control" id="carID" placeholder="Wprowadź id auta"

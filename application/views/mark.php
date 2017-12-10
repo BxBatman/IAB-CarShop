@@ -22,6 +22,9 @@
                                     <th>Imie</th>
                                     <th>Ocena</th>
                                     <th>Komentarz</th>
+                                    <th>Numer biletu</th>
+                                    <th>Data otrzymania</th>
+                                    <th>Komentarz</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -29,10 +32,14 @@
                                 foreach ($markData as $row) {
 
                                     echo "<tr>";
+
                                     echo "<td>" . $row['idMechanik'] . "</td>";
                                     echo "<td>" . $row['nazwisko'] . "</td>";
                                     echo "<td>" . $row['imie'] . "</td>";
                                     echo "<td>" . $row['ocena'] . "</td>";
+                                    echo "<td>" . $row['komentarzM'] . "</td>";
+                                    echo "<td>" . $row['numerBiletu'] . "</td>";
+                                    echo "<td>" . $row['dataOtrzymania'] . "</td>";
                                     echo "<td>" . $row['komentarz'] . "</td>";
                                     echo "</tr>";
 
@@ -49,7 +56,7 @@
 
                 </div>
             </div>
-            <button type="button" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#carModal"
+            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#carModal"
                     style="margin-bottom: 2px;">Pokaż bilety
             </button>
 
@@ -72,11 +79,6 @@
                                     <th>Data zwrotu</th>
                                     <th>Nazwisko</th>
                                     <th>Imie</th>
-                                    <th>Numer telefonu</th>
-                                    <th>Adres</th>
-                                    <th>Miasto</th>
-                                    <th>Kod pocztowy</th>
-                                    <th>Nip</th>
                                     <th>Marka</th>
                                     <th>Model</th>
                                     <th>Rok</th>
@@ -94,11 +96,6 @@
                                     echo "<td>" . $row['dataZwrotu'] . "</td>";
                                     echo "<td>" . $row['nazwiskoK'] . "</td>";
                                     echo "<td>" . $row['imieK'] . "</td>";
-                                    echo " <td>" . $row['numerTelefonu'] . "</td>";
-                                    echo " <td>" . $row['adres'] . "</td>";
-                                    echo " <td>" . $row['miasto'] . "</td>";
-                                    echo " <td>" . $row['kodPocztowy'] . "</td>";
-                                    echo " <td>" . $row['nip'] . "</td>";
                                     echo " <td>" . $row['marka'] . "</td>";
                                     echo " <td>" . $row['model'] . "</td>";
                                     echo " <td>" . $row['rok'] . "</td>";
@@ -171,7 +168,7 @@
                                 </thead>
                                 <tbody>
                                 <?php
-                                foreach ($markData as $row) {
+                                foreach ($mechanicData as $row) {
 
                                     echo "<tr>";
                                     echo "<td>" . $row['idMechanik'] . "</td>";

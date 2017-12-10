@@ -45,7 +45,7 @@ class Invoices extends CI_Controller
     {
         $invoiceNumber = $this->input->post('invoiceNumber');
         $date1 = $this->input->post('date');
-        $date = date('m/d/y', strtotime($date1));
+        $date = date('y/m/d', strtotime($date1));
         $carID = $this->input->post('carID');
         $clientID = $this->input->post('clientID');
         $sellerID = $this->input->post('sellerID');

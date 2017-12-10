@@ -1,6 +1,7 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-1 sidenav">
+
             <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal"
                     style="margin-bottom: 2px" data-target="#myModal3">
                 Pokaż bilety
@@ -70,14 +71,105 @@
 
                 </div>
             </div>
-
-
             <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal"
                     style="margin-bottom: 2px" data-target="#myModal4">
-                Mechanicy
+                Części
             </button>
 
             <div id="myModal4" class="modal fade" role="dialog">
+                <div class="modal-dialog" >
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Części</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Numer</th>
+                                    <th>Opis</th>
+                                    <th>Cena zakupu</th>
+                                    <th>Cena detaliczna</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                foreach ($partsData as $row) {
+
+                                    echo "<tr>";
+                                    echo "<td>" . $row['idCzesci'] . "</td>";
+                                    echo "<td>" . $row['numerCzesci'] . "</td>";
+                                    echo "<td>" . $row['opis'] . "</td>";
+                                    echo "<td>" . $row['cenaZakupu'] . "</td>";
+                                    echo "<td>" . $row['cenaDetaliczna'] . "</td>";
+                                    echo "</tr>";
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal"
+                    style="margin-bottom: 2px" data-target="#myModal5">
+                Mechanicy
+            </button>
+
+            <div id="myModal5" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Mechanicy</h4>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nazwisko</th>
+                                    <th>Imie</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                foreach ($mechanicData as $row) {
+
+                                    echo "<tr>";
+                                    echo "<td>" . $row['idMechanik'] . "</td>";
+                                    echo "<td>" . $row['nazwisko'] . "</td>";
+                                    echo "<td>" . $row['imie'] . "</td>";
+                                    echo "</tr>";
+
+
+                                }
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal"
+                    style="margin-bottom: 2px" data-target="#myModal6">
+                Pokaż naprawy
+            </button>
+
+            <div id="myModal6" class="modal fade" role="dialog">
                 <div class="modal-dialog">
 
                     <div class="modal-content">
@@ -161,7 +253,7 @@
             ?>
             <div class="container" style="width:50%; padding-top: 20px">
                 <h2>Naprawa</h2>
-                <form method="post" action="<?php echo site_url('ticket/addTicket'); ?>">
+                <form method="post" action="<?php echo site_url('repair/addRepair'); ?>">
                     <div class="form-group">
                         <label>Id biletu:</label>
                         <input class="form-control" id="ticketID" placeholder="Wprowadź id biletu"
@@ -184,20 +276,11 @@
                     </div>
                     <div class="form-group">
                         <label>Data zwrotu</label>
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="text" id="date" name="date" class="form-control" placeholder="Wybierz date"
+                        <div class="input-group date" >
+                            <input type="date" id="date" name="date" class="form-control" placeholder="Wybierz date"
                                    required>
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
                         </div>
                     </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#datetpicker').datepicker();
-                        });
-                    </script>
-
                     <button type="submit" class="btn btn-primary">Dodaj</button>
                 </form>
             </div>
