@@ -6,7 +6,7 @@ session_start();
 class Repair extends CI_Controller
 {
     public function getRepairData(){
-        $data = $this->db->query("SELECT * FROM naprawaczesci");
+        $data = $this->db->query("SELECT * FROM naprawaczesci JOIN bilet ON naprawaczesci.idBilet = bilet.idBilet JOIN czesci ON czesci.idCzesci = naprawaczesci.idCzesci");
         $data_query = $data->result_array();
         return $data_query;
     }
@@ -93,7 +93,33 @@ class Repair extends CI_Controller
     }
 
 
-}
+    }
+
+    public function removeRepair(){
+        $id = $this->input->post('id');
+        $this->db->delete('naprawaczesci', array('idNaprawaCzesci' => $id));
+        if ($this->db->affected_rows() > 0) {
+            $success = array(
+                'success' => 'Usunięto naprawe'
+            );
+            $data_query = $this->getPartsData();
+            $ticketData_query = $this->getTicketData();
+            $mechanicData_query = $this->getMechanicData();
+            $repairData_query = $this->getRepairData();
+            $this->load->view('header');
+            $this->load->view('repair', ['success' => $success,'repairData'=>$repairData_query, 'partsData' => $data_query, 'ticketData' => $ticketData_query, 'mechanicData' => $mechanicData_query]);
+        } else {
+            $error = array(
+                'error'=>"Wystapil problem przy usunieciu naprawy badz naprawa o takim id nie istnieje"
+            );
+            $data_query = $this->getPartsData();
+            $ticketData_query = $this->getTicketData();
+            $mechanicData_query = $this->getMechanicData();
+            $repairData_query = $this->getRepairData();
+            $this->load->view('header');
+            $this->load->view('repair', ['error' => $error,'repairData'=>$repairData_query, 'partsData' => $data_query, 'ticketData' => $ticketData_query, 'mechanicData' => $mechanicData_query]);
+        }
+    }
 
 
 }

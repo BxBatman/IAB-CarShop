@@ -60,34 +60,45 @@ class Clients extends CI_Controller
 
     public function removeClient(){
         $id = $this->input->post('id');
-        $this->db->query("SELECT * FROM faktura where idKlient =" . $id);
 
-        if ($this->db->affected_rows() > 0) {
-            $error = array(
-                'error' => 'Nie można usunąć klienta z którym związane są faktury'
-            );
-            $data_query = $this->getClientData();
-            $this->load->view('header');
-            $this->load->view('clients', ['clientData' => $data_query, 'error' => $error]);
-        } else {
-
-            $this->db->delete('klient', array('idKlient' => $id));
+        if($this->db->query("SELECT * FROM bilet WHERE idKlient =".$id))
             if ($this->db->affected_rows() > 0) {
-                $success = array(
-                    'success' => 'Usunięto klienta'
-                );
-                $this->load->view('header');
-                $data_query = $this->getClientData();
-                $this->load->view('clients', ['clientData' => $data_query, 'success' => $success]);
-            } else {
                 $error = array(
-                    'error' => 'Wystąpił błąd podczas usuniecia lub klient o takim id nie istnieje'
+                    'error' => 'Nie można usunąć klienta z którym związane są bilety'
                 );
                 $data_query = $this->getClientData();
                 $this->load->view('header');
                 $this->load->view('clients', ['clientData' => $data_query, 'error' => $error]);
+        } else {
+
+                $this->db->query("SELECT * FROM faktura where idKlient =" . $id);
+                if ($this->db->affected_rows() > 0) {
+                    $error = array(
+                        'error' => 'Nie można usunąć klienta z którym związane są faktury'
+                    );
+                    $data_query = $this->getClientData();
+                    $this->load->view('header');
+                    $this->load->view('clients', ['clientData' => $data_query, 'error' => $error]);
+                } else {
+
+                    $this->db->delete('klient', array('idKlient' => $id));
+                    if ($this->db->affected_rows() > 0) {
+                        $success = array(
+                            'success' => 'Usunięto klienta'
+                        );
+                        $this->load->view('header');
+                        $data_query = $this->getClientData();
+                        $this->load->view('clients', ['clientData' => $data_query, 'success' => $success]);
+                    } else {
+                        $error = array(
+                            'error' => 'Wystąpił błąd podczas usuniecia lub klient o takim id nie istnieje'
+                        );
+                        $data_query = $this->getClientData();
+                        $this->load->view('header');
+                        $this->load->view('clients', ['clientData' => $data_query, 'error' => $error]);
+                    }
+                }
             }
-        }
     }
 
 

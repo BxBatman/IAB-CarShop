@@ -181,19 +181,27 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Nazwisko</th>
-                                    <th>Imie</th>
+                                    <th>Id naprawy</th>
+                                    <th>Number biletu</th>
+                                    <th>Numer czesci</th>
+                                    <th>Ilosc czesci</th>
+                                    <th>Opis</th>
+                                    <th>Cena</th>
+
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
-                                foreach ($mechanicData as $row) {
+                                foreach ($repairData as $row) {
 
                                     echo "<tr>";
-                                    echo "<td>" . $row['idMechanik'] . "</td>";
-                                    echo "<td>" . $row['nazwisko'] . "</td>";
-                                    echo "<td>" . $row['imie'] . "</td>";
+                                    echo "<td>" . $row['idNaprawaCzesci'] . "</td>";
+                                    echo "<td>" . $row['numerBiletu'] . "</td>";
+                                    echo "<td>" . $row['numerCzesci'] . "</td>";
+                                    echo "<td>" . $row['iloscCzesci'] . "</td>";
+                                    echo "<td>" . $row['opis'] . "</td>";
+                                    echo "<td>" . $row['cena'] . "</td>";
+
                                     echo "</tr>";
 
 
@@ -211,21 +219,28 @@
             </div>
 
 
-            <button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#myModal2">
+            <button type="button" class="btn btn-danger btn-sm btn-block" data-toggle="modal" data-target="#myModal8">
                 Usuń
-                bilet
+                naprawe
             </button>
 
-            <div id="myModal4" class="modal fade" role="dialog">
+            <div id="myModal8" class="modal fade" role="dialog">
                 <div class="modal-dialog">
 
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Usuń auto</h4>
+                            <h4 class="modal-title">Usuń naprawe</h4>
                         </div>
                         <div class="modal-body">
-
+                            <form method="post" action="<?php echo site_url('repair/removeRepair'); ?>" >
+                                <div class="form-group">
+                                    <label>Podaj numer ID:</label>
+                                    <input class="form-control" id="id" placeholder="Wprowadź ID"
+                                           name="id" pattern="\d*" required>
+                                </div>
+                                <button type="submit" class="btn btn-danger">Usuń</button>
+                            </form>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>

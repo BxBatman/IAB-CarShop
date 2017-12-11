@@ -11,11 +11,11 @@ class Login extends CI_Controller
     public function show()
     {
 
-        $code = $this->input->post("code");
+        $code = $this->input->post('code');
         $query = $this->db->query("SELECT * FROM sprzedawca");
         $status = "";
         foreach ($query->result() as $row) {
-            if ($code == $row->pass) {
+            if (password_verify($code,$row->pass)) {
                 $_SESSION['imie'] = $row->imie;
                 $_SESSION['nazwisko'] = $row->nazwisko;
                 $status = "exist";
